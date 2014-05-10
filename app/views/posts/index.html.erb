@@ -1,0 +1,42 @@
+<%= link_to new_post_path do %>
+  <button type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-pencil"></span> Write a pretty new post
+  </button>
+<% end %>
+<br>
+<br>
+
+
+
+    <% @posts.each do |post| %>
+
+      <div class="post panel panel-info" style="border-color: #999; text-decoration: none;">
+        <div class="panel-heading" style="background-color: #999; color: black;border-color: #999">
+          <p>
+          <%= post.user.email %>
+          <span style="float:right; font-size:1.2em">
+          <%= link_to edit_post_path(post) do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+      </span>
+        </p>
+        </div>
+        <%= link_to post do %>
+        <div class="panel-body">
+          <p>
+          <%= post.content %>
+        </p>
+        <span style="float: right">
+          <%= post.created_at.strftime("%Y.%m.%d %H:%M") %>
+        </span>
+        </div>
+        <% end %>
+      </div>
+        
+        
+    <% end %>
+
+
