@@ -7,7 +7,8 @@
 </head>
 <body>
   <div id="background-swan"
-  <% if signed_in? -%>
+  <% if signed_in? and !current_user.back_image.nil? -%>
+
     style="background-image: url(<%= current_user.back_image %>);"
   <% end %>
    ></div>
