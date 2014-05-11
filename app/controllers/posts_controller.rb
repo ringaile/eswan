@@ -21,6 +21,20 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def like
+    @post = Post.find params[:id]
+    @user = current_user
+
+    if PostLike.where( :user_id => @user.id, :post_id => @post.id).nil?
+      @like = PostLike.new
+      @like.user = current_user
+      @like.post = @post
+      @like.save
+    end
+
+    redirect_to @post
+  end
+
   # POST /posts
   # POST /posts.json
   def create
