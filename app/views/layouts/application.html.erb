@@ -7,7 +7,6 @@
 </head>
 <body>
   <div id="background-swan"
-
   <% if signed_in? and !current_user.background.nil? %>
     style="background-image: <%= current_user.background %>"
   <% end %>
@@ -29,10 +28,7 @@
           </ul>
           <ul class='nav navbar-nav navbar-right'>
             <% if signed_in? -%>
-            <li><%= link_to "Hello, #{current_user.email}", current_user %>
-            </li>
-            <li>Hello, <%= link_to current_user.email, current_user %> </li>
-            
+            <li><%= link_to "Hello, #{current_user.email}", current_user %></li>
               <li><%= link_to t('.sign_out'), sign_out_path, :method => :delete %></li>
             <% else -%>
               <li><%= link_to t('.sign_in'), sign_in_path %></li>
@@ -41,9 +37,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-<br><br><br>
-
-    <div class="container" style="max-width:900px;">
+    <div class="container page-container" style="max-width:900px;">
       <div class="row">
         <%= yield %>
       </div>
