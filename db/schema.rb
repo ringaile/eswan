@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140511131013) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
-    t.string   "background"
+    t.string   "back_image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
