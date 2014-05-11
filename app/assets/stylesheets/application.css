@@ -15,7 +15,9 @@
  *= require bootstrap
  */
 
-
+html, body{
+	height: 100%;
+}
 
 
 .field_with_errors {
@@ -26,4 +28,14 @@
 
 .navbar-header{
 	color:white;
+}
+
+#background-swan{
+	background: #FFF url(/assets/swan.jpg) no-repeat;
+	background-position: top center; 
+	background-size: cover;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
 }

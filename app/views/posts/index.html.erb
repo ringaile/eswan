@@ -10,25 +10,26 @@
 
     <% @posts.each do |post| %>
 
-      <div class="post panel panel-info" style="border-color: #999; text-decoration: none;">
-        <div class="panel-heading" style="background-color: #999; color: black;border-color: #999">
+      <div class="post">
+        <div class="post-heading">
           <p>
           <%= post.user.email %>
           <span style="float:right; font-size:1.2em">
-          <%= link_to like_post_path(post) do %>
-            <span class="glyphicon glyphicon-heart"></span>
-          <% end %>  
-          <%= link_to edit_post_path(post) do %>
-            <span class="glyphicon glyphicon-edit"></span>
-          <% end %>
-          <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= link_to like_post_path(post) do %>
+              <span class="glyphicon glyphicon-heart"></span>
+              <span class="likes-number"><%= post.post_likes.length %></span>
+            <% end %>  
+            <%= link_to edit_post_path(post) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+            <% end %>
+            <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
             <span class="glyphicon glyphicon-trash"></span>
           <% end %>
       </span>
         </p>
         </div>
         <%= link_to post do %>
-        <div class="panel-body">
+        <div class="post-body">
           <p>
           <%= post.content %>
         </p>

@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
     @user = current_user
 
-    if PostLike.where( :user_id => @user.id, :post_id => @post.id).nil?
+    if PostLike.where( :user_id => @user.id, :post_id => @post.id).empty?
       @like = PostLike.new
       @like.user = current_user
       @like.post = @post
