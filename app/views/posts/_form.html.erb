@@ -1,20 +1,27 @@
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:
       <ul>
       <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+<<<<<<< HEAD
     <%= f.label :content %><br>
+=======
+
+
+
+  <div class="post_entry">
+    <%= f.label "Your post" %><br>
+>>>>>>> 5639a899c3c2142f2a59f54ad57419948142fe25
     <%= f.text_area :content %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn"%>
   </div>
 <% end %>

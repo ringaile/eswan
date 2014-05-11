@@ -1,11 +1,32 @@
-<div class='text-field'>
-  <%= form.label :email %>
-  <br>
-  <%= form.text_field :email, :type => 'email' %>
-</div>
+<%= form_for @user do |form| %>
 
-<div class='password-field'>
-  <%= form.label :password %>
+  <div class='text-field'>
+    <%= form.label :username %>
+    <br>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class='text-field'>
+    <%= form.label :email %>
+    <br>
+    <%= form.text_field :email, :type => 'email' %>
+  </div>
+
+  <div class='password-field'>
+    <%= form.label :password %>
+    <br>
+    <%= form.password_field :password %>
+  </div>
   <br>
-  <%= form.password_field :password %>
-</div>
+
+  <div class='text-field'>
+    <%= form.label :picture %>
+    <br>
+    <%= form.text_field :picture %>
+  </div>
+  <br>
+
+  <div class='submit-field'>
+    <%= form.submit %>
+  </div>
+<% end %>

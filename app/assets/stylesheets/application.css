@@ -14,3 +14,12 @@
  *= require_self
  *= require bootstrap
  */
+
+
+
+
+.field_with_errors {
+  input, textarea{
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 -3px 8px rgba(0, 0, 0, 0.2);
+  }
+}
