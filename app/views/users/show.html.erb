@@ -27,7 +27,7 @@
       <% if @user.picture.nil? %>
       src="http://i.imgur.com/4kW0zeD.png"
       <% else %>
-        src="<%= user.picture %>"
+        src="<%= @user.picture %>"
       <% end %>
       >
   <% end %>
