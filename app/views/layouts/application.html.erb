@@ -6,7 +6,12 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="background-swan"></div>
+  <div id="background-swan"
+
+  <% if signed_in? and !current_user.background.nil? %>
+    style="background-image: <%= current_user.background %>"
+  <% end %>
+   ></div>
    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -24,10 +29,9 @@
           </ul>
           <ul class='nav navbar-nav navbar-right'>
             <% if signed_in? -%>
-            
-            <li class="navbar-brand" style="font-size:small; text-decoration:none;"> Hello,
-             <%= current_user.email %>
+            <li><%= link_to "Hello, #{current_user.email}", current_user %>
             </li>
+            <li>Hello, <%= link_to current_user.email, current_user %> </li>
             
               <li><%= link_to t('.sign_out'), sign_out_path, :method => :delete %></li>
             <% else -%>
