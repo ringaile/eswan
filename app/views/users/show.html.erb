@@ -23,7 +23,13 @@
   </div>
 
   <%= link_to @user do %>
-    <img class="user_picture" src="<%= @user.picture %>">
+    <img class="user_picture"
+      <% if @user.picture.nil? %>
+      src="http://i.imgur.com/4kW0zeD.png"
+      <% else %>
+        src="<%= user.picture %>"
+      <% end %>
+      >
   <% end %>
 
   <p class="name"><%= @user.username %></p>
