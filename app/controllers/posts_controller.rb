@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.reverse
+    @posts = Post.all.order("rating DESC")
   end
+
 
   # GET /posts/1
   # GET /posts/1.json
@@ -30,6 +31,13 @@ class PostsController < ApplicationController
       @like.user = current_user
       @like.post = @post
       @like.save
+
+      @post.rating = calculate_post_rating(@post)
+      @post.save
+
+      puts @post.inspect
+    else
+      puts "Allready liked "
     end
 
     redirect_to @post
@@ -86,4 +94,17 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:content)
     end
+
+    def calculate_post_rating post
+      post_weight = Math::E ** (- (Time.now.to_i/86400 - post.created_at.to_i/86400))
+      sum_of_like_weights = 0
+
+      post.post_likes.each do |like|
+        sum_of_like_weights += Math::E ** (- (Time.now.to_i/86400 - like.created_at.to_i/86400))
+      end
+
+      new_post_rating = post_weight * sum_of_like_weights
+    end
+
 end
+
