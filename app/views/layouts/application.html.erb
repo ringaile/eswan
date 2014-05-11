@@ -23,9 +23,11 @@
             <li class="active"><a href="/posts">Posts</a></li>
           </ul>
           <ul class='nav navbar-nav navbar-right'>
-            <li class="navbar-brand" style="font-size:small; text-decoration:none;"> Hello, <%= current_user.email %>
-            </li>
             <% if signed_in? -%>
+            <li class="navbar-brand" style="font-size:small; text-decoration:none;"> Hello,
+             <%= current_user.email %>
+            </li>
+            
               <li><%= link_to t('.sign_out'), sign_out_path, :method => :delete %></li>
             <% else -%>
               <li><%= link_to t('.sign_in'), sign_in_path %></li>
