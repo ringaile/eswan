@@ -1,24 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%= link_to users_path do %>
+  <button type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-star"></span> Back to all users
+  </button>
+<% end %>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<br><br>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+<% if notice %>
+<div class="alert alert-success">
+  <p id="notice"><%= notice %></p>
+</div>
+<% end %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="user">
+  <div class="user_control">
+    <%= link_to edit_user_path(@user) do %>
+      <span class="glyphicon glyphicon-edit"></span>
+    <% end %>
+    <%= link_to @user, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @user.picture %>
-</p>
+  <%= link_to @user do %>
+    <img class="user_picture" src="<%= @user.picture %>">
+  <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <p class="name"><%= @user.username %></p>
+  <p class="email"><%= @user.email %></p>
+</div>
