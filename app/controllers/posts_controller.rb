@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_rights, only: [:edit, :destroy]
+
   before_filter :authorize
   # GET /posts
   # GET /posts.json
@@ -21,6 +23,12 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
   end
+
+  def my_posts
+    @posts = Post.where(user_id: current_user).reverse
+    render "index"
+  end
+
 
   def like
     @post = Post.find params[:id]
@@ -106,5 +114,8 @@ class PostsController < ApplicationController
       new_post_rating = post_weight * sum_of_like_weights
     end
 
+    def check_rights
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false) if @post.user != current_user
+    end
 end
 

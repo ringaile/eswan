@@ -3,5 +3,16 @@
 <%= render 'form' %>
 
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to @post do %>
+  <button class="btn btn-default">Show</button>
+<% end %>
+
+<%= link_to posts_path do %>
+  <button class="btn btn-default">Back</button>
+<% end %>
+
+
+
+
+
+

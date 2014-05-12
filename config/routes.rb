@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   get 'posts/:id/like' => 'posts#like', as: :like_post
+  get 'my_posts' => 'posts#my_posts', as: :my_posts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
