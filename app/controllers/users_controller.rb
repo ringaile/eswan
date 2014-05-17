@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_rights, only: [:edit, :destroy]
+  
   before_filter :authorize, only: [:index, :show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
@@ -70,5 +72,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :password, :email, :picture, :back_image)
+    end
+
+    def check_rights
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false) if @user != current_user
     end
 end
